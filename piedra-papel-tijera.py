@@ -15,21 +15,22 @@ def jugar():
     return '¡Perdiste!'
 
 def ganó_el_jugador(jugador, oponente):
-    # Reglas del juego
     if ((jugador == 'pi' and oponente == 'ti')
         or (jugador == 'ti' and oponente == 'pa')
         or (jugador == 'pa' and oponente == 'pi')):
         return True
-    else:
-        return False
+    return False
 
-# Mensaje de bienvenida
-print("Bienvenido al juego de Piedra, Papel o Tijera")
+def iniciar_juego():
+    print("Bienvenido al juego de Piedra, Papel o Tijera")
+    while True:
+        resultado = jugar()
+        print(resultado)
+        seguir_jugando = input("¿Jugar de nuevo? (sí/no): ").lower()
+        if seguir_jugando == 'no':  # Cambio aquí
+            print("Gracias por jugar. Presiona cualquier tecla para salir.")
+            input()  # Espera a que el usuario presione una tecla antes de cerrar.
+            break
 
-# Bucle del juego
-while True:
-    resultado = jugar()
-    print(resultado)
-    seguir_jugando = input("¿Jugar de nuevo? (sí/no): ").lower()
-    if seguir_jugando != 'sí':
-        break
+if __name__ == "__main__":
+    iniciar_juego()
